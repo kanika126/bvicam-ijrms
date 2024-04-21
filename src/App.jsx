@@ -7,7 +7,9 @@ function App() {
 
   return (
     <>
-      <Navbar></Navbar>   
+    <div style={{ backgroundImage: 'url("../assets/bvi.jpg")', backgroundSize: 'cover', minHeight: '100vh' }}>
+      <Navbar></Navbar>
+      </div>   
       <Footer></Footer>
     </>
   )
