@@ -1,15 +1,20 @@
 import React from 'react'
 import './App.css'
+import { Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import Home from "./pages/Home/Home";
 
 function App() {
 
   return (
     <>
-    <div style={{ backgroundImage: 'url("../assets/bvi.jpg")', backgroundSize: 'cover', minHeight: '100vh' }}>
+    
       <Navbar></Navbar>
-      </div>   
+       
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
       <Footer></Footer>
     </>
   )
