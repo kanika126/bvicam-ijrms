@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsMenuOpen(prevState => !prevState);
+  };
   return (
     <>
       <nav className="border-gray-200 dark:bg-gray-900">
@@ -8,7 +13,7 @@ const Navbar = () => {
           <a href="http://bvicam.in/" className="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="https://www.bvicam.ac.in/indiacom/images/BVICAM-Logo.png" className="h-20" alt="Logo" />
           </a>
-          <span className="self-center text-2xl font-semibold whitespace-nowrap text-black dark:text-white">
+          <span className="self-center text-center text-2xl font-semibold whitespace-nowrap text-black dark:text-white">
             International Journal of Research in<br />
             Multidisciplinary Studies (IJRMS)<br />
             (An official Journal of BVICAM, New Delhi)
@@ -22,7 +27,7 @@ const Navbar = () => {
       </nav>
       <nav className="bg-cyan-600 dark:bg-gray-700 size-full">
         <div className="max-w-screen-xl px-4 py-3 m-px ">
-          <div className="flex items-center">
+          <div className="flex items-center  text-center">
             <ul className="flex justify-center flex-row font-medium mt-0 mx-32 space-x-8 rtl:space-x-reverse text-sm ">
               <li>
                 <a href="/home" className="text-white dark:text-white hover:underline" aria-current="page">Home</a>
@@ -42,12 +47,14 @@ const Navbar = () => {
               <li>
                 <a href="/archive" className="text-white dark:text-white hover:underline">Archive</a>
               </li>
-              <li className="relative">
-                <a href="/" className="text-white dark:text-white hover:underline">Process</a>
-                <ul className="absolute hidden mt-2 w-48 bg-white rounded-lg shadow-lg">
-                    <li><a href="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Step 1</a></li>
-                    <li><a href="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Step 2</a></li>
-                    <li><a href="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Step 3</a></li>
+              <li className="relative" onBlur={() => setIsMenuOpen(false)}>
+      <a href="/" className="text-white dark:text-white hover:underline" onClick={toggleDropdown}>
+        Process
+      </a>
+      <ul className={`absolute ${isMenuOpen ? '' : 'hidden'} mt-2 w-48 bg-white rounded-lg shadow-lg`} id="dropdown-menu">
+                    <li><a href="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Plagiarism Policy</a></li>
+                    <li><a href="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ethical Complaince for Authors</a></li>
+                    <li><a href="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Copyright & Ownership</a></li>
                 </ul>
               </li>
               <li>

@@ -7,9 +7,9 @@ const Archive = () => {
         <h2 className="text-2xl font-bold text-center  py-4">Archive </h2>
         <p className="text-center mt-2 px-4 pb-4"></p>
         <p className="text-lg text-center">
-        Year 2023     :    [Vol. 2 No. 1] [Vol. 2 No.2]
+        Year 2023     :    <a href="/currentissue2-1" className="text-blue-500">[Vol. 2 No. 1]</a> <a href="/currentissue" className="text-blue-500">[Vol. 2 No.2]</a>
         <br></br><br></br>
-        Year 2022     :    [Vol. 1 No. 1] [Vol. 1 No.2]
+        Year 2022     :    <a href="/currentissue1-1" className="text-blue-500">[Vol. 1 No. 1]</a> <a href="/currentissue1-2" className="text-blue-500">[Vol. 1 No.2]</a>
         </p>
         <br></br>
         <br></br>

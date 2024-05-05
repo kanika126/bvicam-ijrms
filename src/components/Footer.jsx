@@ -9,7 +9,12 @@ const Footer = () => {
           <div class="mb-2 md:mb-0">
               <a href="http://bvicam.in/" class="flex items-center">
                   <img src="https://www.bvicam.ac.in/indiacom/images/BVICAM-Logo.png" class="h-8 me-3" alt="Logo" />
-                  <span class="self-center text-2xl font-semibold whitespace-nowrap text-white dark:text-white">BVICAM</span>
+                  <span class="self-center text-md font-semibold whitespace-nowrap text-white dark:text-white">
+                    Bharati Vidyapeeth's Institute of <br></br>Computer Applications and Management (BVICAM)
+                  
+                  <br></br>Address: A-4, Paschim Vihar, Opp. Paschim Vihar (East) Metro Station,
+                  <br></br> Rohtak Road, New Delhi, Delhi 110063
+                  <br></br>Phone: 01125275055</span>  
               </a>
           </div>
           <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -17,10 +22,10 @@ const Footer = () => {
                   <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">Resources</h2>
                   <ul class="text-white dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="http://bvicam.in/" class="hover:underline">BVICAM</a>
+                          <a href="/callforpaper" class="hover:underline">Call For Papers </a>
                       </li>
                       <li>
-                          <a href="http://bvicam.in/" class="hover:underline">Tailwind CSS</a>
+                          <a href="/editorial" class="hover:underline">Editorial Board</a>
                       </li>
                   </ul>
               </div>
@@ -28,21 +33,21 @@ const Footer = () => {
                   <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">Follow us</h2>
                   <ul class="text-white dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="https://github.com/" class="hover:underline ">Github</a>
+                          <a href="https://www.instagram.com/ibvicam/" class="hover:underline ">Instagram</a>
                       </li>
                       <li>
-                          <a href="http://bvicam.in/" class="hover:underline">Discord</a>
+                          <a href="https://www.youtube.com/channel/UCuOPY-98JUY9T2igRpj8tIQ" class="hover:underline">Youtube</a>
                       </li>
                   </ul>
               </div>
               <div>
-                  <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">Legal</h2>
+                  <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">Other</h2>
                   <ul class="text-white dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="#" class="hover:underline">Privacy Policy</a>
+                          <a href="/guidelines" class="hover:underline">Guidelines</a>
                       </li>
                       <li>
-                          <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                          <a href="/paymentmodes" class="hover:underline">Payment Modes</a>
                       </li>
                   </ul>
               </div>

@@ -18,6 +18,10 @@ import Review from './pages/Review';
 import Subscription from './pages/Subsciption';
 import Guidelines from './pages/Guidelines';
 import Archive from './pages/Archive';
+import Currentisssue11 from './pages/Currentissue11';
+import Currentisssue12 from './pages/Currentissue12';
+import Currentisssue21 from './pages/Currentissue21';
+import Feedback from './pages/Feedback';
 
 function App() {
 
@@ -40,6 +44,10 @@ function App() {
         <Route path="/plagiarism" element={<Plagiarism></Plagiarism>} />
         <Route path="/review" element={<Review></Review>} />
         <Route path="/subscription" element={<Subscription></Subscription>} />
+        <Route path="/currentissue1-1" element={<Currentisssue11></Currentisssue11>} />
+        <Route path="/currentissue1-2" element={<Currentisssue12></Currentisssue12>} />
+        <Route path="/currentissue2-1" element={<Currentisssue21></Currentisssue21>} />
+        <Route path="/feedback" element={<Feedback></Feedback>} />
       </Routes>
       <Footer></Footer>
     </>
