@@ -3,8 +3,8 @@ import React from 'react';
 const Footer = () => {
   return (
     <>
-<footer class="bg-white dark:bg-gray-900">
-    <div class="mx-2 w-full max-w-screen-xl px-4 py-3 lg:py-8">
+<footer class="bg-white dark:bg-gray-900 h-screen w-screen">
+    <div class="flex-wrap mx-auto w-full max-w-screen-xl lg:py-12">
         <div class="md:flex md:justify-between bg-cyan-600 size-full px-4 py-3">
           <div class="mb-2 md:mb-0">
               <a href="http://bvicam.in/" class="flex items-center">
