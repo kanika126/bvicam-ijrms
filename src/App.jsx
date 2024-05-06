@@ -22,8 +22,8 @@ import Currentisssue11 from './pages/Currentissue11';
 import Currentisssue12 from './pages/Currentissue12';
 import Currentisssue21 from './pages/Currentissue21';
 import Feedback from './pages/Feedback';
-import Signup from "./components/Singup";
-import Login from "./components/Login";
+import Signup from "./components/Signup/index.jsx";
+import Login from "./components/Login/index.jsx";
 
 function App() {
   const user = localStorage.getItem("token");
