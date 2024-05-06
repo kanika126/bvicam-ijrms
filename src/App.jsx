@@ -22,7 +22,8 @@ import Currentisssue11 from './pages/Currentissue11';
 import Currentisssue12 from './pages/Currentissue12';
 import Currentisssue21 from './pages/Currentissue21';
 import Feedback from './pages/Feedback';
-
+import Signup from "./components/Singup";
+import Login from "./components/Login";
 
 function App() {
   const user = localStorage.getItem("token");
@@ -49,7 +50,10 @@ function App() {
         <Route path="/currentissue1-2" element={<Currentisssue12></Currentisssue12>} />
         <Route path="/currentissue2-1" element={<Currentisssue21></Currentisssue21>} />
         <Route path="/feedback" element={<Feedback></Feedback>} />
-        
+        {user && <Route path="/" exact element={<Main />} />}
+			<Route path="/signup" exact element={<Signup />} />
+			<Route path="/login" exact element={<Login />} />
+			<Route path="/" element={<Navigate replace to="/login" />} />
       </Routes>
       <Footer></Footer>
     </>
