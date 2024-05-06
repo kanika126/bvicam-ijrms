@@ -1,8 +1,15 @@
-const mongoose = require('mongoose');
-const mongoURL = "mongodb+srv://kanika12602:Q20QaVJplrSL4Jrg@cluster0.o8sdgn1.mongodb.net/"
-const connectToMongo = () => {
-    mongoose.connect(mongoURL, () => {
-        console.log("Connected to Mongo Successfully");
-    })
-}
-module.exports = connectToMongo;
+const mongoose = require("mongoose");
+
+module.exports = () => {
+	const connectionParams = {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	};
+	try {
+		mongoose.connect(process.env.DB, connectionParams);
+		console.log("Connected to database successfully");
+	} catch (error) {
+		console.log(error);
+		console.log("Could not connect database!");
+	}
+};
