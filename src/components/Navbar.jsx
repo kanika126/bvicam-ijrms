@@ -55,16 +55,17 @@ const Navbar = () => {
                     <li><a href="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Plagiarism Policy</a></li>
                     <li><a href="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ethical Complaince for Authors</a></li>
                     <li><a href="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Copyright & Ownership</a></li>
+                    <li><a href="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Download</a></li>
                 </ul>
-              </li>
-              <li>
-                <a href="/download" className="text-white dark:text-white hover:underline">Download</a>
               </li>
               <li>
                 <a href="/contactus" className="text-white dark:text-white hover:underline">Contact Us</a>
               </li>
               <li>
                 <a href="/feedback" className="text-white dark:text-white hover:underline">Feedback</a>
+              </li>
+              <li>
+                <a href="/login" className="text-white dark:text-white hover:underline">Login</a>
               </li>
             </ul>
           </div>
