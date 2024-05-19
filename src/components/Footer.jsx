@@ -3,9 +3,9 @@ import React from 'react';
 const Footer = () => {
   return (
     <>
-<footer class="bg-white dark:bg-gray-900 h-screen w-screen">
-    <div class="flex-wrap mx-auto w-full max-w-screen-xl lg:py-12">
-        <div class="md:flex md:justify-between bg-cyan-600 size-full px-4 py-3">
+<footer class="bg-white dark:bg-gray-900">
+      <div class="mx-auto max-w-screen-l lg:py-12">
+        <div class="md:flex md:justify-between bg-cyan-600 px-4 py-3">
           <div class="mb-2 md:mb-0">
               <a href="http://bvicam.in/" class="flex items-center">
                   <img src="https://www.bvicam.ac.in/indiacom/images/BVICAM-Logo.png" class="h-8 me-3" alt="Logo" />
@@ -53,12 +53,12 @@ const Footer = () => {
               </div>
           </div>
       </div>
-      <hr class="my-6 border-gray-400 sm:mx-auto dark:border-gray-700 lg:my-8" />
+      <hr class="my-4 border-gray-400 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div class="sm:flex sm:items-center sm:justify-between">
           <span class="text-sm text-black sm:text-center dark:text-gray-400">© 2024 <a href="http://bvicam.in/" class="hover:underline">BVICAM™</a>. All Rights Reserved.
           </span>
           <div class="flex mt-4 sm:justify-center sm:mt-0">
-              <a href="#" class="text-black hover:text-gray-300 dark:hover:text-white">
+              <a href="http://bvicam.in/" class="text-black hover:text-gray-300 dark:hover:text-white">
                   <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
                         <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"/>
                     </svg>

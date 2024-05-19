@@ -10,7 +10,7 @@ import Callforpaper from './pages/Callforpaper';
 import Complaince from './pages/Complaince';
 import Contactus from './pages/Contactus';
 import Copyright from './pages/Copyright';
-import Currentisssue from './pages/Currentissue';
+import Currentisssue from './pages/Currentissue/Currentissue';
 import Downloads from './pages/Downloads';
 import Paymentmodes from './pages/Paymentmodes';
 import Plagiarism from './pages/Plagiarism';
@@ -18,20 +18,24 @@ import Review from './pages/Review';
 import Subscription from './pages/Subsciption';
 import Guidelines from './pages/Guidelines';
 import Archive from './pages/Archive';
-import Currentisssue11 from './pages/Currentissue11';
-import Currentisssue12 from './pages/Currentissue12';
-import Currentisssue21 from './pages/Currentissue21';
+import Currentisssue11 from './pages/Currentissue/Currentissue11';
+import Currentisssue12 from './pages/Currentissue/Currentissue12';
+import Currentisssue21 from './pages/Currentissue/Currentissue21';
 import Feedback from './pages/Feedback';
-import Signup from "./components/Signup/index.jsx";
-import Login from "./components/Login/index.jsx";
+import Login from "./components/Login";
+import SignUp from "./components/Signup";
+import UserDetails from "./components/Admin/userDetails";
+import Dashboard from './pages/Dashboard';
+import PaperPublish from './components/Admin/paperpublish';
 
 function App() {
-  const user = localStorage.getItem("token");
+  const isLoggedIn = window.localStorage.getItem("loggedIn");
+  
   return (
     <> 
       <Navbar></Navbar>
       <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/editorial" element={<Editorial />} />
         <Route path="/aim" element={<Aim></Aim>} />
         <Route path="/archive" element={<Archive></Archive>} />
@@ -50,10 +54,16 @@ function App() {
         <Route path="/currentissue1-2" element={<Currentisssue12></Currentisssue12>} />
         <Route path="/currentissue2-1" element={<Currentisssue21></Currentisssue21>} />
         <Route path="/feedback" element={<Feedback></Feedback>} />
-        {user && <Route path="/home" exact element={<Home />} />}
-			<Route path="/signup" exact element={<Signup />} />
-			<Route path="/login" exact element={<Login />} />
-			<Route path="/home" element={<Navigate replace to="/login" />} />
+        <Route
+              exact
+              path="/dashboard/*"
+              element={isLoggedIn === "true" ? <Dashboard /> : <Login />}
+            />
+            
+            <Route path="/sign-in" element={<Login />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/userDetails" element={<UserDetails />} />
+            <Route path="/paperpublish" element={<PaperPublish />} />
       </Routes>
       <Footer></Footer>
     </>
