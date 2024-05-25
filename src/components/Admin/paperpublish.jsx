@@ -16,9 +16,28 @@ export default function PaperPublish() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Here you can handle the form submission, including file upload
-    console.log(volume, issue, title, author, year, file);
+    const formData = new FormData();
+    formData.append("volume", volume);
+    formData.append("issue", issue);
+    formData.append("title", title);
+    formData.append("author", author);
+    formData.append("year", year);
+    formData.append("file", file);
+
+    fetch("http://localhost:5000/publish-paper", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        alert(data.message);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
+
 
   return (
     <div className="max-w-lg mx-auto mt-10 p-3 bg-white shadow-md">
