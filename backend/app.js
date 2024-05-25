@@ -7,19 +7,21 @@ app.use(cors());
 const bcrypt = require("bcryptjs");
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
-
 const jwt = require("jsonwebtoken");
 var nodemailer = require("nodemailer");
+const multer = require("multer");
+const path = require("path");
 
 const JWT_SECRET =
-  "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe";
+  "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89y";
 
 const mongoUrl =
-  "mongodb+srv://adarsh:adarsh@cluster0.zllye.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://kanika12602:Q20QaVJplrSL4Jrg@cluster0.o8sdgn1.mongodb.net/";
 
 mongoose
   .connect(mongoUrl, {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
   .then(() => {
     console.log("Connected to database");
@@ -28,9 +30,98 @@ mongoose
 
 require("./userDetails");
 require("./imageDetails");
+require("./feedback");
 
 const User = mongoose.model("UserInfo");
 const Images = mongoose.model("ImageDetails");
+const Feedback = mongoose.model("Feedback");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({ storage: storage });
+
+app.post("/publish-paper", upload.single("file"), async (req, res) => {
+  const { volume, issue, title, author, year } = req.body;
+  const file = req.file;
+
+  if (!volume || !issue || !title || !author || !year || !file) {
+    return res.status(400).send("All fields are required");
+  }
+
+  try {
+    // Save the file information and other details to your database if needed
+    // Example:
+    // await Paper.create({ volume, issue, title, author, year, filePath: file.path });
+
+    res.status(201).json({ message: "Paper published successfully", file: file.path });
+  } catch (error) {
+    res.status(500).send("Error publishing paper: " + error.message);
+  }
+});
+
+
+app.post("/api/feedback", async (req, res) => {
+  const { name, email, mobile, organization, feedback } = req.body;
+
+  if (!name || !email || !feedback) {
+    return res.status(400).send("Name, email, and feedback are required");
+  }
+
+  const newFeedback = new Feedback({ name, email, mobile, organization, feedback });
+
+  try {
+    await newFeedback.save();
+    res.status(201).send("Feedback submitted successfully");
+  } catch (error) {
+    res.status(500).send("Error saving feedback: " + error.message);
+  }
+});
+
+app.post("/allFeedback", async (req, res) => {
+  const { token } = req.body;
+  try {
+    const user = jwt.verify(token, JWT_SECRET, (err, decoded) => {
+      if (err) {
+        return "token expired";
+      }
+      return decoded;
+    });
+    console.log(user);
+    if (user == "token expired") {
+      return res.send({ status: "error", data: "token expired" });
+    }
+
+    const useremail = user.email;
+    Feedback.find({})
+      .then((data) => {
+        res.send({ status: "ok", data: data });
+      })
+      .catch((error) => {
+        res.send({ status: "error", data: error });
+      });
+  } catch (error) {
+    console.error("Error fetching feedback:", error);
+    res.status(500).send({ status: "error", message: "Internal server error" });
+  }
+});
+
+app.get("/getAllFeedback", async (req, res) => {
+  try {
+    const feedbacks = await Feedback.find({});
+    res.status(200).json({ status: "ok", data: feedbacks });
+  } catch (error) {
+    res.status(500).json({ status: "error", error: error.message });
+  }
+});
+
+
 app.post("/register", async (req, res) => {
   const { fname, lname, email, password, userType } = req.body;
 

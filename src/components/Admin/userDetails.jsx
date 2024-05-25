@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AdminHome from "./adminHome";
 import UserHome from "../userHome";
-import PaperPublish from "./paperpublish";
 
 export default function UserDetails() {
   const [userData, setUserData] = useState("");
