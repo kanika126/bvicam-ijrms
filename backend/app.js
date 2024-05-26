@@ -9,8 +9,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 const jwt = require("jsonwebtoken");
 var nodemailer = require("nodemailer");
-const multer = require("multer");
-const path = require("path");
+
 
 const JWT_SECRET =
   "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89y";
@@ -31,41 +30,41 @@ mongoose
 require("./userDetails");
 require("./imageDetails");
 require("./feedback");
+require("./paper");
 
 const User = mongoose.model("UserInfo");
 const Images = mongoose.model("ImageDetails");
 const Feedback = mongoose.model("Feedback");
+const Paper = mongoose.model("Paper");
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
-
-const upload = multer({ storage: storage });
 
 app.post("/publish-paper", upload.single("file"), async (req, res) => {
   const { volume, issue, title, author, year } = req.body;
   const file = req.file;
 
+  // Check if all required fields are present
   if (!volume || !issue || !title || !author || !year || !file) {
-    return res.status(400).send("All fields are required");
+    return res.status(400).json({ error: "All fields are required" });
   }
 
   try {
-    // Save the file information and other details to your database if needed
-    // Example:
-    // await Paper.create({ volume, issue, title, author, year, filePath: file.path });
+    // Save paper data to the database
+    const paper = await Paper.create({
+      volume,
+      issue,
+      title,
+      author,
+      year,
+      filename: file.filename, // File name saved in the uploads directory
+    });
 
-    res.status(201).json({ message: "Paper published successfully", file: file.path });
+    // Respond with success message
+    res.status(201).json({ message: "Paper submitted successfully", data: paper });
   } catch (error) {
-    res.status(500).send("Error publishing paper: " + error.message);
+    console.error("Error saving paper:", error);
+    res.status(500).json({ error: "Error saving paper" });
   }
 });
-
 
 app.post("/api/feedback", async (req, res) => {
   const { name, email, mobile, organization, feedback } = req.body;

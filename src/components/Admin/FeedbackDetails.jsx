@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import FeedbackList from "./FeedbackList";
+import Feedback from "../../pages/Feedback";
+
 
 export default function FeedbackDetails() {
   const [feedbackData, setFeedbackData] = useState([]);
   const [error, setError] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:5000/allFeedback", {
@@ -27,6 +30,9 @@ export default function FeedbackDetails() {
         console.log(data, "feedbackData");
         if (data.status === "ok") {
           setFeedbackData(data.data);
+          if (data.data.userType === "Admin") {
+            setIsAdmin(true);
+          }
         } else {
           setError(data.data);
         }
@@ -39,8 +45,15 @@ export default function FeedbackDetails() {
 
   return (
     <div>
-      {error && <p>{error}</p>}
-      <FeedbackList feedbackData={feedbackData} />
+      {isAdmin ? (
+        <>
+          {error && <p>{error}</p>}
+          <FeedbackList feedbackData={feedbackData} />
+        </>
+      ) : (
+        <FeedbackList />
+      )}
     </div>
   );
 }
+

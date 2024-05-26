@@ -13,7 +13,7 @@ const Sidebar = () => {
         <Link to="/dashboard/paperpublish" className="block py-2 px-4 mb-2 rounded hover:bg-cyan-700">Paper Publish</Link>
         <Link to="/dashboard/paperDetails" className="block py-2 px-4 mb-2 rounded hover:bg-cyan-700">View Papers</Link>
         <Link to="/dashboard/userDetails" className="block py-2 px-4 mb-2 rounded hover:bg-cyan-700">Users</Link>
-        <Link to="/dashboard/feedbackDetails" className="block py-2 px-4 mb-2 rounded hover:bg-cyan-700">View Feedback</Link>
+        <Link to="/dashboard/feedbackDetails" className="block py-2 px-4 mb-2 rounded hover:bg-cyan-700">Feedback</Link>
         
       </div>
       <div>

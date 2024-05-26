@@ -10,7 +10,13 @@ export default function PaperPublish() {
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
-    setFile(selectedFile);
+    // Check if the selected file is a PDF
+    if (selectedFile && selectedFile.type === "application/pdf") {
+      setFile(selectedFile);
+    } else {
+      // Show an error message if the selected file is not a PDF
+      alert("Please select a PDF file.");
+    }
   };
 
   const handleSubmit = (e) => {

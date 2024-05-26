@@ -27,8 +27,9 @@ import SignUp from "./components/Signup";
 import UserDetails from "./components/Admin/userDetails";
 import Dashboard from './pages/Dashboard';
 import PaperPublish from './components/Admin/paperpublish';
-import FeedbackDetails from './components/Admin/FeedbackDetails';
 import PaperDetails from './components/Admin/PaperDetails';
+import FeedbackDetails from './components/Admin/feedbackDetails';
+
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("loggedIn");
@@ -60,12 +61,11 @@ function App() {
               exact
               path="/dashboard/*"
               element={isLoggedIn === "true" ? <Dashboard /> : <Login />}
-            />
-            
+            />           
             <Route path="/sign-in" element={<Login />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/userDetails" element={<UserDetails />} />
-            <Route path="/feedbackDetails" element={<FeedbackDetails/>} />
+            <Route path="/feedbackDetails" element={<FeedbackDetails />} />
             <Route path="/paperDetails" element={<PaperDetails />} />
             <Route path="/paperpublish" element={<PaperPublish />} />
       </Routes>
