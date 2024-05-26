@@ -9,7 +9,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 const jwt = require("jsonwebtoken");
 var nodemailer = require("nodemailer");
-
+const path = require('path');
 
 const JWT_SECRET =
   "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89y";
@@ -37,6 +37,7 @@ const Images = mongoose.model("ImageDetails");
 const Feedback = mongoose.model("Feedback");
 const Paper = mongoose.model("Paper");
 
+app.use('/pdfs', express.static(path.join(__dirname, 'pdfs')));
 
 app.post("/publish-paper", upload.single("file"), async (req, res) => {
   const { volume, issue, title, author, year } = req.body;
