@@ -30,42 +30,42 @@ mongoose
 require("./userDetails");
 require("./imageDetails");
 require("./feedback");
-require("./paper");
+//require("./paper");
 
 const User = mongoose.model("UserInfo");
 const Images = mongoose.model("ImageDetails");
 const Feedback = mongoose.model("Feedback");
-const Paper = mongoose.model("Paper");
+//const Paper = mongoose.model("Paper");
 
 app.use('/pdfs', express.static(path.join(__dirname, 'pdfs')));
 
-app.post("/publish-paper", upload.single("file"), async (req, res) => {
-  const { volume, issue, title, author, year } = req.body;
-  const file = req.file;
+// app.post("/publish-paper", upload.single("file"), async (req, res) => {
+//   const { volume, issue, title, author, year } = req.body;
+//   const file = req.file;
 
-  // Check if all required fields are present
-  if (!volume || !issue || !title || !author || !year || !file) {
-    return res.status(400).json({ error: "All fields are required" });
-  }
+//   // Check if all required fields are present
+//   if (!volume || !issue || !title || !author || !year || !file) {
+//     return res.status(400).json({ error: "All fields are required" });
+//   }
 
-  try {
-    // Save paper data to the database
-    const paper = await Paper.create({
-      volume,
-      issue,
-      title,
-      author,
-      year,
-      filename: file.filename, // File name saved in the uploads directory
-    });
+//   try {
+//     // Save paper data to the database
+//     const paper = await Paper.create({
+//       volume,
+//       issue,
+//       title,
+//       author,
+//       year,
+//       filename: file.filename, // File name saved in the uploads directory
+//     });
 
-    // Respond with success message
-    res.status(201).json({ message: "Paper submitted successfully", data: paper });
-  } catch (error) {
-    console.error("Error saving paper:", error);
-    res.status(500).json({ error: "Error saving paper" });
-  }
-});
+//     // Respond with success message
+//     res.status(201).json({ message: "Paper submitted successfully", data: paper });
+//   } catch (error) {
+//     console.error("Error saving paper:", error);
+//     res.status(500).json({ error: "Error saving paper" });
+//   }
+// });
 
 app.post("/api/feedback", async (req, res) => {
   const { name, email, mobile, organization, feedback } = req.body;
